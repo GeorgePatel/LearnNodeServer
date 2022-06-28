@@ -13,9 +13,24 @@ const complements = [
     "You've learned a lot of things, and that's pretty hard to do"
 ];
 
+const insults = [
+    "You suck at programming",
+    "Should've stuck to your previous job",
+    "You only know Java lol",
+    "Can you make a front end?",
+    "Just because you learned DynamoDB doesn't mean you understand relational databases",
+    "I bet you cannot make it in Software Development industry"
+];
+
+
 function getRandomComplement() {
     const randomIndex = Math.floor(Math.random() * complements.length);
     return complements[randomIndex];
+}
+
+function getRandomInsult() {
+    const randomIndex = Math.floor(Math.random() * insults.length);
+    return insults[randomIndex];
 }
 
 const app = express();
@@ -28,6 +43,14 @@ app.get("/complement", function(req, res) {
     res
         .json({
             complement: getRandomComplement()
+        })
+        .end();
+});
+
+app.get("/insult", function(req, res) {
+    res
+        .json({
+            insult: getRandomInsult()
         })
         .end();
 });
